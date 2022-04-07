@@ -7,15 +7,7 @@ use Phalcon\Logger\Adapter\Stream;
 
 class MyLogger
 {
-    /**
-     * log($message,$opr)
-     *function to log message in log file
-     * 
-     * @param [type] $message
-     * @param [type] $opr
-     * @return void
-     */
-    public function log($message, $opr)
+    public function log($message)
     {
         $adapter = new Stream('../app/logs/main.log');
         $logger  = new Logger(
@@ -25,6 +17,6 @@ class MyLogger
             ]
         );
 
-        $logger->$opr($message);
+        $logger->info($message);
     }
 }

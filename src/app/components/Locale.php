@@ -1,5 +1,5 @@
 <?php
-//class for translation
+
 namespace App\Components;
 
 use Phalcon\Di\Injectable;
@@ -9,7 +9,11 @@ use Phalcon\Translate\TranslateFactory;
 
 class Locale extends Injectable
 {
-
+    // public $locale = 'en';
+    public function setLanguage($locale)
+    {
+        $this->locale = $locale;
+    }
     /**
      * @return NativeArray
      */
@@ -38,14 +42,6 @@ class Locale extends Injectable
             ]
         );
     }
-
-    /**
-     * getLocale()
-     * 
-     * function to check if file already exists is cache and return it
-     *
-     * @return void
-     */
     public function getLocale()
     {
         $selectedLanguage = $this->request->get('locale');
@@ -59,6 +55,7 @@ class Locale extends Injectable
             return $locale;
         } else {
             return $this->locale;
+            $this->locale;
         }
     }
 }
